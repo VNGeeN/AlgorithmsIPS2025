@@ -1,0 +1,2 @@
+/usr/bin/ar qc libExpressionParser.a  CMakeFiles/ExpressionParser.dir/src/lib/ExpressionParser.cpp.o
+/usr/bin/ranlib libExpressionParser.a

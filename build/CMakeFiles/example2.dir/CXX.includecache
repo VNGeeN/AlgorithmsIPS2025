@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/ExpressionParser.h
+string
+-
+vector
+-
+stack
+-
+map
+-
+functional
+-
+
+/home/kritack/AlgosIPS2025/examples/example2.cpp
+iostream
+-
+ExpressionParser.h
+/home/kritack/AlgosIPS2025/examples/ExpressionParser.h
+
