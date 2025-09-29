@@ -29,7 +29,10 @@ release:
 
 # Run main application
 run: build
-	@echo "Usage: ./$(BUILD_DIR)/$(PROJECT_NAME) <input_file>"
+	@./$(BUILD_DIR)/$(PROJECT_NAME)
+
+run_test: build
+	@./$(BUILD_DIR)/$(PROJECT_NAME) tests/basic_operations.txt
 
 # Run examples
 example1: build
@@ -40,6 +43,45 @@ example2: build
 
 test_errors: build
 	@./$(BUILD_DIR)/error_tests
+
+tests_dir:
+	@mkdir -p tests
+	@echo "Creating sample test files..."
+	@echo "# Basic arithmetic operations test file" > tests/basic_operations.txt
+	@echo "2 + 3 * 4" >> tests/basic_operations.txt
+	@echo "(1 + 2) * 3" >> tests/basic_operations.txt
+	@echo "10 - 4 / 2" >> tests/basic_operations.txt
+	@echo "2 ^ 3 + 1" >> tests/basic_operations.txt
+	@echo "# Mathematical functions test file" > tests/functions.txt
+	@echo "SIN(0) + COS(0)" >> tests/functions.txt
+	@echo "EXP(0)" >> tests/functions.txt
+	@echo "SIN(3.14159) + 1" >> tests/functions.txt
+	@echo "# Edge cases and error handling" > tests/edge_cases.txt
+	@echo "-5 + 3" >> tests/edge_cases.txt
+	@echo "1 + 2 * (3 - 4)" >> tests/edge_cases.txt
+	@echo "Sample test files created in tests/ directory"
+
+# Run examples (if they exist)
+example1: build
+	@if [ -f "./$(BUILD_DIR)/example1" ]; then \
+		./$(BUILD_DIR)/example1; \
+	else \
+		echo "example1 not built"; \
+	fi
+
+example2: build
+	@if [ -f "./$(BUILD_DIR)/example2" ]; then \
+		./$(BUILD_DIR)/example2; \
+	else \
+		echo "example2 not built"; \
+	fi
+
+test_errors: build
+	@if [ -f "./$(BUILD_DIR)/error_tests" ]; then \
+		./$(BUILD_DIR)/error_tests; \
+	else \
+		echo "error_tests not built"; \
+	fi
 
 # Clean build files
 clean:

@@ -25,6 +25,18 @@ iostream
 -
 fstream
 -
+vector
+-
+algorithm
+-
+string
+-
+dirent.h
+-
+sys/stat.h
+-
+cstring
+-
 ExpressionParser.h
 /home/kritack/AlgosIPS2025/app/ExpressionParser.h
 

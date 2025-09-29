@@ -1,3 +1,22 @@
+# В строке текстового файла  задано  выражение  из  целых 
+# чисел и операций '+', '-', '*', '/', '^', SIN, COS, EXP. Порядок
+# вычислений  определяется  приоритетом  операций   и   круглыми
+# скобками. Возможен одноместный минус в  начале  выражения  или
+# после открывающей скобки. Преобразовать выражение в постфиксную
+# форму (алгоритм Дейкстры) и вычислить его  значение.  Показать 
+# этапы  выполнения (11).
+
+# Автор: Винокуренко Н.Г.
+
+# Среда выполнения: gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2) 
+
+# Источники:
+# https://habr.com/ru/articles/111361/ 
+# https://habr.com/ru/articles/856166/
+# https://en.cppreference.com/w/cpp/filesystem.html (C++ Reference)
+# https://www.cppstories.com/2024/common-filesystem-cpp20/ (C++ Stories)
+# https://www.studyplan.dev/pro-cpp/file-system 
+
 cmake_minimum_required(VERSION 3.0)
 project(AlgosIPS2025 VERSION 1.0.0 LANGUAGES CXX)
 
