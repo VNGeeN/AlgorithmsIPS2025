@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named error_tests
+
+# Build rule for target.
+error_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 error_tests
+.PHONY : error_tests
+
+# fast build rule for target.
+error_tests/fast:
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/build
+.PHONY : error_tests/fast
+
+#=============================================================================
 # Target rules for targets named example2
 
 # Build rule for target.
@@ -188,6 +201,33 @@ app/main.s: app/main.cpp.s
 app/main.cpp.s:
 	$(MAKE) -f CMakeFiles/AlgosIPS2025.dir/build.make CMakeFiles/AlgosIPS2025.dir/app/main.cpp.s
 .PHONY : app/main.cpp.s
+
+examples/error_tests.o: examples/error_tests.cpp.o
+
+.PHONY : examples/error_tests.o
+
+# target to build an object file
+examples/error_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/examples/error_tests.cpp.o
+.PHONY : examples/error_tests.cpp.o
+
+examples/error_tests.i: examples/error_tests.cpp.i
+
+.PHONY : examples/error_tests.i
+
+# target to preprocess a source file
+examples/error_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/examples/error_tests.cpp.i
+.PHONY : examples/error_tests.cpp.i
+
+examples/error_tests.s: examples/error_tests.cpp.s
+
+.PHONY : examples/error_tests.s
+
+# target to generate assembly for a file
+examples/error_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/examples/error_tests.cpp.s
+.PHONY : examples/error_tests.cpp.s
 
 examples/example1.o: examples/example1.cpp.o
 
@@ -277,6 +317,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... error_tests"
 	@echo "... example2"
 	@echo "... example1"
 	@echo "... rebuild_cache"
@@ -285,6 +326,9 @@ help:
 	@echo "... app/main.o"
 	@echo "... app/main.i"
 	@echo "... app/main.s"
+	@echo "... examples/error_tests.o"
+	@echo "... examples/error_tests.i"
+	@echo "... examples/error_tests.s"
 	@echo "... examples/example1.o"
 	@echo "... examples/example1.i"
 	@echo "... examples/example1.s"

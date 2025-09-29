@@ -5,6 +5,15 @@ project(AlgosIPS2025 VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Глобальные флаги компиляции
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fnon-call-exceptions")
+endif()
+
+# Include directories
+include_directories(include)
+
 # Создаем библиотеку
 add_library(ExpressionParser STATIC 
     src/lib/ExpressionParser.cpp
@@ -14,9 +23,6 @@ add_library(ExpressionParser STATIC
 target_include_directories(ExpressionParser PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-
-# Флаги компиляции для библиотеки
-target_compile_options(ExpressionParser PRIVATE -Wall -Wextra -Wpedantic)
 
 # Основное приложение
 add_executable(${PROJECT_NAME} 
@@ -33,8 +39,10 @@ target_link_libraries(example1 ExpressionParser)
 add_executable(example2 examples/example2.cpp)
 target_link_libraries(example2 ExpressionParser)
 
+add_executable(error_tests examples/error_tests.cpp)
+target_link_libraries(error_tests ExpressionParser)
+
 # Настройки для отладки
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(ExpressionParser PRIVATE -g -O0)
-    target_compile_options(${PROJECT_NAME} PRIVATE -g -O0)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
 endif()

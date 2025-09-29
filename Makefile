@@ -1,14 +1,10 @@
 # Makefile for AlgosIPS2025 project
 
-# Project name
 PROJECT_NAME = AlgosIPS2025
-
-# Build directory
 BUILD_DIR = build
-
-# Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic
+
 .PHONY: all debug release clean configure build run help rebuild examples test
 
 # Default target
@@ -35,13 +31,15 @@ release:
 run: build
 	@echo "Usage: ./$(BUILD_DIR)/$(PROJECT_NAME) <input_file>"
 
-# Run example1
+# Run examples
 example1: build
 	@./$(BUILD_DIR)/example1
 
-# Run example2
 example2: build
 	@./$(BUILD_DIR)/example2
+
+test_errors: build
+	@./$(BUILD_DIR)/error_tests
 
 # Clean build files
 clean:
@@ -51,18 +49,19 @@ clean:
 rebuild: clean all
 
 # Build and run all examples
-examples: example1 example2
+examples: example1 example2 test_errors
 
 # Help
 help:
 	@echo "Available targets:"
-	@echo "  all       - Configure and build (default)"
-	@echo "  debug     - Build with debug flags"
-	@echo "  release   - Build with release flags"
-	@echo "  build     - Build only"
-	@echo "  run       - Show usage for main app"
-	@echo "  example1  - Run basic usage example"
-	@echo "  example2  - Run interactive example"
-	@echo "  examples  - Run all examples"
-	@echo "  clean     - Remove build files"
-	@echo "  rebuild   - Clean and rebuild"
+	@echo "  all         - Configure and build (default)"
+	@echo "  debug       - Build with debug flags"
+	@echo "  release     - Build with release flags"
+	@echo "  build       - Build only"
+	@echo "  run         - Show usage for main app"
+	@echo "  example1    - Run basic usage example"
+	@echo "  example2    - Run interactive example"
+	@echo "  test_errors - Run arithmetic error tests"
+	@echo "  examples    - Run all examples"
+	@echo "  clean       - Remove build files"
+	@echo "  rebuild     - Clean and rebuild"

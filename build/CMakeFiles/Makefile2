@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /home/kritack/AlgosIPS2025/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/error_tests.dir/all
 all: CMakeFiles/example2.dir/all
 all: CMakeFiles/example1.dir/all
 all: CMakeFiles/AlgosIPS2025.dir/all
@@ -66,6 +67,7 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/error_tests.dir/clean
 clean: CMakeFiles/example2.dir/clean
 clean: CMakeFiles/example1.dir/clean
 clean: CMakeFiles/AlgosIPS2025.dir/clean
@@ -74,13 +76,40 @@ clean: CMakeFiles/ExpressionParser.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/error_tests.dir
+
+# All Build rule for target.
+CMakeFiles/error_tests.dir/all: CMakeFiles/ExpressionParser.dir/all
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/depend
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kritack/AlgosIPS2025/build/CMakeFiles --progress-num=5,6 "Built target error_tests"
+.PHONY : CMakeFiles/error_tests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/error_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kritack/AlgosIPS2025/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/error_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kritack/AlgosIPS2025/build/CMakeFiles 0
+.PHONY : CMakeFiles/error_tests.dir/rule
+
+# Convenience name for target.
+error_tests: CMakeFiles/error_tests.dir/rule
+
+.PHONY : error_tests
+
+# clean rule for target.
+CMakeFiles/error_tests.dir/clean:
+	$(MAKE) -f CMakeFiles/error_tests.dir/build.make CMakeFiles/error_tests.dir/clean
+.PHONY : CMakeFiles/error_tests.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/example2.dir
 
 # All Build rule for target.
 CMakeFiles/example2.dir/all: CMakeFiles/ExpressionParser.dir/all
 	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/depend
 	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kritack/AlgosIPS2025/build/CMakeFiles --progress-num=7,8 "Built target example2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kritack/AlgosIPS2025/build/CMakeFiles --progress-num=9,10 "Built target example2"
 .PHONY : CMakeFiles/example2.dir/all
 
 # Build rule for subdir invocation for target.
@@ -107,7 +136,7 @@ CMakeFiles/example2.dir/clean:
 CMakeFiles/example1.dir/all: CMakeFiles/ExpressionParser.dir/all
 	$(MAKE) -f CMakeFiles/example1.dir/build.make CMakeFiles/example1.dir/depend
 	$(MAKE) -f CMakeFiles/example1.dir/build.make CMakeFiles/example1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kritack/AlgosIPS2025/build/CMakeFiles --progress-num=5,6 "Built target example1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kritack/AlgosIPS2025/build/CMakeFiles --progress-num=7,8 "Built target example1"
 .PHONY : CMakeFiles/example1.dir/all
 
 # Build rule for subdir invocation for target.

@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/example2.dir/examples/example2.cpp.o  -o example2  libExpressionParser.a 
+/usr/bin/c++   -Wall -Wextra -Wpedantic -fnon-call-exceptions -g -O0 -g  -rdynamic CMakeFiles/example2.dir/examples/example2.cpp.o  -o example2  libExpressionParser.a 

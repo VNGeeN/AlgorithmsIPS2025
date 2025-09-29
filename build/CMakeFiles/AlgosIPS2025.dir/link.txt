@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/AlgosIPS2025.dir/app/main.cpp.o  -o AlgosIPS2025  libExpressionParser.a 
+/usr/bin/c++   -Wall -Wextra -Wpedantic -fnon-call-exceptions -g -O0 -g  -rdynamic CMakeFiles/AlgosIPS2025.dir/app/main.cpp.o  -o AlgosIPS2025  libExpressionParser.a 
