@@ -1,3 +1,22 @@
+// # В строке текстового файла  задано  выражение  из  целых
+// # чисел и операций '+', '-', '*', '/', '^', SIN, COS, EXP. Порядок
+// # вычислений  определяется  приоритетом  операций   и   круглыми
+// # скобками. Возможен одноместный минус в  начале  выражения  или
+// # после открывающей скобки. Преобразовать выражение в постфиксную
+// # форму (алгоритм Дейкстры) и вычислить его  значение.  Показать
+// # этапы  выполнения (11).
+
+// # Автор: Винокуренко Н.Г.
+
+// # Среда выполнения: gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2)
+
+// # Источники:
+// # https://habr.com/ru/articles/111361/
+// # https://habr.com/ru/articles/856166/
+// # https://en.cppreference.com/w/cpp/filesystem.html (C++ Reference)
+// # https://www.cppstories.com/2024/common-filesystem-cpp20/ (C++ Stories)
+// # https://www.studyplan.dev/pro-cpp/file-system
+
 #include "ExpressionParser.h"
 #include <cmath>
 #include <sstream>
@@ -9,12 +28,17 @@
 
 ExpressionParser::ExpressionParser()
 {
-    // Приоритеты операторов
-    operatorPriority = {
-        {"+", 1}, {"-", 1}, {"*", 2}, {"/", 2}, {"^", 3}, {"~", 4} // унарный минус
+    // Приоритеты операторов и их ассоциативность
+    operatorInfo = {
+        {"+", {1, false}}, // левоассоциативный
+        {"-", {1, false}}, // левоассоциативный
+        {"*", {2, false}}, // левоассоциативный
+        {"/", {2, false}}, // левоассоциативный
+        {"^", {3, true}},  // правоассоциативный
+        {"~", {4, true}}   // правоассоциативный
     };
 
-    // Унарные функции с проверками
+    // Унарные функции
     unaryFunctions = {
         {"SIN", [this](double x)
          {
@@ -45,7 +69,7 @@ ExpressionParser::ExpressionParser()
              return result;
          }}};
 
-    // Бинарные операторы с проверками
+    // Бинарные операторы (остаются без изменений)
     binaryOperators = {
         {"+", [this](double a, double b)
          {
@@ -161,7 +185,7 @@ void ExpressionParser::checkDomainConstraints(const std::string &function, doubl
 
 bool ExpressionParser::isOperator(const std::string &token) const
 {
-    return operatorPriority.find(token) != operatorPriority.end() ||
+    return operatorInfo.find(token) != operatorInfo.end() ||
            token == "(" || token == ")";
 }
 
@@ -308,13 +332,27 @@ std::vector<std::string> ExpressionParser::toPostfix(const std::string &expressi
                 }
             }
 
-            // Выталкиваем операторы с higher or equal priority
+            // Ключевое изменение: правильная обработка ассоциативности
             while (!operatorStack.empty() &&
                    operatorStack.top() != "(" &&
-                   operatorPriority[operatorStack.top()] >= operatorPriority[currentOperator])
+                   operatorInfo.find(operatorStack.top()) != operatorInfo.end())
             {
-                output.push_back(operatorStack.top());
-                operatorStack.pop();
+
+                const OperatorInfo &topOp = operatorInfo[operatorStack.top()];
+                const OperatorInfo &currOp = operatorInfo[currentOperator];
+
+                // Для левоассоциативных: выталкиваем если приоритет >=
+                // Для правоассоциативных: выталкиваем только если приоритет >
+                if (topOp.priority > currOp.priority ||
+                    (topOp.priority == currOp.priority && !currOp.isRightAssociative))
+                {
+                    output.push_back(operatorStack.top());
+                    operatorStack.pop();
+                }
+                else
+                {
+                    break;
+                }
             }
 
             operatorStack.push(currentOperator);

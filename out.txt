@@ -1,0 +1,43 @@
+Line 1: 3 + 4 * 2
+  Postfix: 3 4 2 * + 
+  Result: 11
+
+Line 2: (1 + 2) * 3
+  Postfix: 1 2 + 3 * 
+  Result: 9
+
+Line 3: SIN(0) + COS(0)
+  Postfix: 0 SIN 0 COS + 
+  Result: 1
+
+Line 4: 2 ^ 3 + 1
+  Postfix: 2 3 ^ 1 + 
+  Result: 9
+
+Line 5: -5 + 3
+  Postfix: 5 ~ 3 + 
+  Result: -2
+
+Line 6: EXP(0)
+  Postfix: 0 EXP 
+  Result: 1
+
+Line 7: -(-5-(-3))
+  Postfix: 5 ~ 3 ~ - ~ 
+  Result: 2
+
+Line 8: 2^3^2
+  Postfix: 2 3 ^ 2 ^ 
+  Result: 64
+
+Line 9: COS(SIN(0))
+  Postfix: 0 SIN COS 
+  Result: 1
+
+Line 10: -2+3*2^4-7
+  Postfix: 2 ~ 3 2 4 ^ * + 7 - 
+  Result: 39
+
+Line 11: EXP(-41+3*2^4-7)
+  Postfix: 41 ~ 3 2 4 ^ * + 7 - EXP 
+  Result: 1
