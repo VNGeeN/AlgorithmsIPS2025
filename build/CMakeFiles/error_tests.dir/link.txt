@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -Wpedantic -fnon-call-exceptions -g -O0 -g  -rdynamic CMakeFiles/error_tests.dir/examples/error_tests.cpp.o  -o error_tests  libExpressionParser.a 

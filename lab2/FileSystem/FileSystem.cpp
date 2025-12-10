@@ -887,7 +887,7 @@ void FileSystem::executeCommand(const std::string &command)
         std::string importPath = command.substr(7);
         if (importPath.empty())
         {
-            importPath = "."; // Текущая директория по умолчанию
+            importPath = ".";
         }
         importFromRealPath(importPath);
     }
